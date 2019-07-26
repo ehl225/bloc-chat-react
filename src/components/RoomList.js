@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-//import firebase from 'firebase';
 
 class RoomList extends Component {
 constructor(props) {
@@ -24,10 +23,20 @@ createRoom(e) {
 };
 	this.roomsRef.push(newRoom);
 	this.setState({newRoomName: ""});
-	console.log("This worked");
 }
-handleRoomChange(e) {
+handleRoomNameChange(e) {
 	this.setState({newRoomName: e.target.value});
+}
+
+handleActiveRoomChange(e) {
+e.preventDefault();
+this.setState({activeRoom: e.target.value});
+console.log('This works');
+console.log(this.state.activeRoom);
+}
+
+selectRoom(room) {
+this.props.setActiveRoom(room);
 }
 
 render () {
@@ -38,17 +47,23 @@ return (
 			<h1 className="formTitle">Create a room</h1>
 			<label className="roomName">Room Name</label>
 			<input id="newRoomInput" type="text"
-value={this.state.newRoomName} onChange={ (e) => this.handleRoomChange(e)} />
-			<input type="submit" value="Submit"
-//onSubmit={ (e) => this.createRoom(e)}
-/>
+value={this.state.newRoomName} onChange={ (e) => 
+this.handleRoomNameChange(e)} />
+			<input type="submit" value="Submit"/>
 	</form>
 </section>
 <section className="roomList">
 {this.state.rooms.map((room, index) => 
-	<div className="room" key={index}> {room.name}
+	<div className="room" key={index} onClick = {(e) => 
+this.selectRoom(room, e)} 
+//style={this.state.activeRoom ?{fontWeight: 'bold'} : {fontWeight: 'normal'}} 
+>
+{room.name}
 	</div>
 	)}
+</section>
+<section className="activeRoom">
+{this.state.activeRoom}
 </section>
 </div>
 );

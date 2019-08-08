@@ -13,21 +13,27 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+main {
+  height:100%
+}
 .roomData {
 float: left;
-width: 25%;
-height: 80%;
+width: 30%;
+height: 100%;
 background-color: grey;
 border: solid black 4px;
 }
-
+.activeRoom {
+font-weight: bold;
+}
+.currentActiveRoom {
+  border: solid red 2px;
+}
 .messageList {
 width: 75%;
 height: 80%;
 border: solid pink 4px;
 }
-
-.activeRoom {
-font-weight: bold;
+.message {
+  border: solid blue 2px;
 }

@@ -3,7 +3,7 @@ import './App.css';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList';
 import MessageList from './components/MessageList';
-
+import SetUsername from './components/setUsername';
 //The core Firebase JS SDK is always required and must be
 //listed first
 //<script src =
@@ -30,11 +30,16 @@ class App extends Component {
 		super(props);
 		this.state ={
 			activeRoom: "",
+			currentUser: ""
 		};
 	this.setActiveRoom=this.setActiveRoom.bind(this);
+	this.setUser=this.setUser.bind(this);
 }
 setActiveRoom(room) {
 this.setState({activeRoom: room});
+}
+setUser(user) {
+this.setState({currentUser: user});
 }
 render () {
  return (
@@ -46,6 +51,9 @@ render () {
 	<section className="roomData">
 		<RoomList firebase= {firebase} setActiveRoom={this.setActiveRoom}/>
     	</section>
+	<section className="loginInfo">
+<SetUsername firebase= {firebase} setUser={this.setUser} currentUser={this.state.currentUser} />
+	</section>
 	<section className="messageList">
 	<div className="currentActiveRoom">
 	{this.state.activeRoom}

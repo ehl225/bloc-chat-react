@@ -19,17 +19,13 @@ componentDidMount () {
 }
 componentWillReceiveProps (nextProps) {
 	this.updateDisplayedMessages (nextProps.activeRoom);
-console.log("nextProps" + nextProps.activeRoom);
 this.setState({currentActiveRoom: nextProps.activeRoom})
-console.log("stillNextProps" + this.state.currentActiveRoom);
 }
 updateDisplayedMessages (currentActiveRoom) {
 	if (!currentActiveRoom) {
 		return;
 	}
-//	var newMessages = ;
 	this.setState ({displayedMessages: this.state.messages.filter(message => message.roomId === parseInt( currentActiveRoom))});
-console.log("currentActiveRoom" + this.state.currentActiveRoom);
 }
 render () {
 return (

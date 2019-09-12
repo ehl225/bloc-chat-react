@@ -4,15 +4,7 @@ import * as firebase from 'firebase';
 import RoomList from './components/RoomList';
 import MessageList from './components/MessageList';
 import SetUsername from './components/setUsername';
-//The core Firebase JS SDK is always required and must be
-//listed first
-//<script src =
-//"https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js" >
-//</script>
-//TODO: Add SKDs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#config-web-app
 
-//Your web app's Firebase configuration
 var firebaseConfig = {
 	apiKey: "AIzaSyBxLjymw75SqIlvQUz9XFs5SwdviM1P7nk",
 	authDomain: "bloc-chat-react-ehl.firebaseapp.com",
@@ -48,17 +40,17 @@ render () {
 	<h1>Bloc Chat</h1>
       </header>
 	<main >
-	<section className="roomData">
-		<RoomList firebase= {firebase} setActiveRoom={this.setActiveRoom}/>
-    	</section>
 	<section className="loginInfo">
 <SetUsername firebase= {firebase} setUser={this.setUser} currentUser={this.state.currentUser} />
 	</section>
+	<section className="roomData">
+		<RoomList firebase= {firebase} setActiveRoom={this.setActiveRoom}/>
+    	</section>
 	<section className="messageList">
 	<div className="currentActiveRoom">
-	{this.state.activeRoom}
+	<h1>Room: {this.state.activeRoom} </h1>
 	</div>
-	<MessageList firebase= {firebase} activeRoom={this.state.activeRoom}/>
+	<MessageList firebase= {firebase} activeRoom={this.state.activeRoom}  currentUser={this.state.currentUser}/>
 	</section>
 	</main>
 </div>

@@ -16,23 +16,21 @@ handleSignIn(e) {
   handleSignOut(e) {
     this.props.firebase.auth().signOut();
 }
-
 render () {
   return (
     <div className="loginInfo">
-    <div className="userInfo"
-    //onChange= {(e) => this.handleDisplayName(e)}
-    >
-   Current User: {this.props.currentUser ?  this.props.currentUser.displayName : "guest" }
-  </div>
-    <button className="signIn" onClick = {(e) => this.handleSignIn(e)}
-    //onChange= {(user) => this.props.setUser(user)}
-    >
+    <div className="loginToggle">
+    <button className="signIn" onClick = {(e) => this.handleSignIn(e)}>
     Sign In
     </button>
     <button className="signOut" onClick= {(e) => this.handleSignOut(e)}>
     Sign Out
     </button>
+    </div>
+    <div className="userInfo">
+    <h1>   Welcome, {this.props.currentUser ?  this.props.currentUser.displayName : "Guest" }
+    </h1>
+    </div>
     </div>
   )
   }
